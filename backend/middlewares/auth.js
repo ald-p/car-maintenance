@@ -1,9 +1,8 @@
-const expressJwt = require('express-jwt');
+const { expressjwt: jwt } = require('express-jwt');
 
-const auth = expressJwt({
+const auth = jwt({
   secret: process.env.JWT_SECRET,
   algorithms: ['HS256'],
-  requestProperty: 'user', // attaches payload to req.user
   getToken: (req) => {
     // Extract token from Authorization header
     if (

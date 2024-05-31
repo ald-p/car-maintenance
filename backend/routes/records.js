@@ -1,12 +1,13 @@
 // Requirements
 const express = require('express');
 const router = express.Router();
+const auth = require('../middlewares/auth');
 const Record = require('../models/Record');
 
 // Get all records by user
-router.get('/', async (req, res, next) => {
+router.get('/', auth, async (req, res, next) => {
   try {
-    const records = await Record.find({ userId: req.user.id });
+    const records = await Record.find({ userId: req.auth.user.id });
     res.json(records);
   } catch (err) {
     next({ status: 500, message: 'Server error' });
@@ -14,9 +15,9 @@ router.get('/', async (req, res, next) => {
 });
 
 // Get record by id
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', auth, async (req, res, next) => {
   try {
-    const record = await Record.find({ recordId: req.params.id });
+    const record = await Record.findOne({ _id: req.params.id });
 
     if (!record) {
       next({ status: 404, message: 'Record not found' });
@@ -29,10 +30,10 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // Add a new record for a specific user
-router.post('/', async (req, res, next) => {
+router.post('/', auth, async (req, res, next) => {
   const { date, tasks } = req.body;
   try {
-    const newRecord = new Record({ userId: req.user.id, date, tasks });
+    const newRecord = new Record({ userId: req.auth.user.id, date, tasks });
     const record = await newRecord.save();
     res.status(201).json(record);
   } catch (err) {
@@ -41,7 +42,7 @@ router.post('/', async (req, res, next) => {
 });
 
 // Update a record
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', auth, async (req, res, next) => {
   const { date, tasks } = req.body;
   try {
     const record = await Record.findByIdAndUpdate(
@@ -61,7 +62,7 @@ router.put('/:id', async (req, res, next) => {
 });
 
 // Delete a record
-router.put('/:id', async (req, res, next) => {
+router.delete('/:id', auth, async (req, res, next) => {
   try {
     const record = await Record.findByIdAndDelete(req.params.id);
 

@@ -1,9 +1,15 @@
 // Requirements
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+
+// Get users
+router.get('/', async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+});
 
 // Signup Route
 router.post('/signup', async (req, res, next) => {
