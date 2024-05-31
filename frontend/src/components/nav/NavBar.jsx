@@ -2,7 +2,7 @@ import { IoCarSport } from 'react-icons/io5';
 
 const NavBar = () => {
   return (
-    <div className="navbar bg-base-100 md:px-10 lg:px-10 bg-neutral text-neutral-content">
+    <div className="navbar bg-base-100 lg:px-10 bg-neutral text-neutral-content">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -29,10 +29,10 @@ const NavBar = () => {
               <a>Home</a>
             </li>
             <li>
-              <a>Dashboard</a>
+              <a>Records</a>
             </li>
             <li>
-              <a>Records</a>
+              <a>Add Record</a>
             </li>
           </ul>
         </div>
@@ -47,10 +47,10 @@ const NavBar = () => {
             <a>Home</a>
           </li>
           <li>
-            <a>Dashboard</a>
+            <a className="active">Records</a>
           </li>
           <li>
-            <a>Records</a>
+            <a>Add Record</a>
           </li>
         </ul>
       </div>
