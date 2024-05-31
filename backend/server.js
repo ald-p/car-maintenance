@@ -20,6 +20,8 @@ app.get('/', (req, res) => {
 });
 
 // Controllers
+const recordsController = require('./routes/records');
+app.use('/records', recordsController);
 
 // 404 Route
 app.use((req, res) => {
