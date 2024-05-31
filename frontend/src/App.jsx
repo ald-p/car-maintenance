@@ -1,3 +1,5 @@
+import { IoCarSport } from 'react-icons/io5';
+
 function App() {
   return (
     <>
@@ -35,7 +37,10 @@ function App() {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">AutoLog</a>
+          <a className="btn btn-ghost text-xl">
+            <IoCarSport className="text-2xl" />
+            AutoLog
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
