@@ -1,8 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 /* CORS */
 app.use(cors());
@@ -11,7 +12,10 @@ app.use(cors());
 app.use(express.json());
 
 /* Database connection */
-mongoose.connect('mongodb://localhost/car_maintenance');
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 /* Routes */
 // Home
@@ -22,6 +26,9 @@ app.get('/', (req, res) => {
 // Controllers
 const recordsController = require('./routes/records');
 app.use('/records', recordsController);
+
+const usersController = require('./routes/users');
+app.use('/users', usersController);
 
 // 404 Route
 app.use((req, res) => {

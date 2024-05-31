@@ -34,7 +34,7 @@ router.post('/', async (req, res, next) => {
   try {
     const newRecord = new Record({ userId: req.user.id, date, tasks });
     const record = await newRecord.save();
-    res.json(record);
+    res.status(201).json(record);
   } catch (err) {
     next({ status: 500, message: 'Server error' });
   }
@@ -75,4 +75,4 @@ router.put('/:id', async (req, res, next) => {
   }
 });
 
-module.exports = Router;
+module.exports = router;
