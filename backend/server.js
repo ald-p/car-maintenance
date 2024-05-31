@@ -6,7 +6,13 @@ const app = express();
 const port = process.env.PORT;
 
 /* CORS */
-app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:5000',
+  credentials: true,
+  methods: ['GET', 'PUT', 'POST', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsOptions));
 
 /* Body parsers */
 app.use(express.json());
