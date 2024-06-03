@@ -1,5 +1,5 @@
-function App() {
-  return <></>;
-}
+import React from 'react';
 
-export default App;
+export default function App() {
+  return <h1>This is AutoLog!</h1>;
+}
