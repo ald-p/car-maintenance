@@ -31,13 +31,10 @@ router.get('/:id', auth, async (req, res, next) => {
 
 // Add a new record for a specific user
 router.post('/', auth, async (req, res, next) => {
-  const { date, tasks, mileage } = req.body;
   try {
     const newRecord = new Record({
       userId: req.auth.user.id,
-      date,
-      tasks,
-      mileage,
+      ...req.body,
     });
     const record = await newRecord.save();
     res.status(201).json(record);
@@ -48,13 +45,10 @@ router.post('/', auth, async (req, res, next) => {
 
 // Update a record
 router.put('/:id', auth, async (req, res, next) => {
-  const { date, tasks, mileage } = req.body;
   try {
-    const record = await Record.findByIdAndUpdate(
-      req.params.id,
-      { date, tasks, mileage },
-      { new: true }
-    );
+    const record = await Record.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
 
     if (!record) {
       next({ status: 404, message: 'Record not found' });

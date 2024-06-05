@@ -1,21 +1,30 @@
 const mongoose = require('mongoose');
 
-const TaskSchema = new mongoose.Schema({
-  type: { type: String, required: true },
-  description: { type: String },
-  partsUsed: { type: [String] },
-  cost: { type: Number },
-});
-
 const RecordSchema = new mongoose.Schema(
   {
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    name: {
+      type: String,
+      required: true,
+    },
     date: { type: Date, required: true },
     mileage: {
       type: Number,
       required: true,
     },
-    tasks: [TaskSchema],
+    shop: {
+      type: String,
+      required: true,
+    },
+    tasks: {
+      type: [String],
+      required: true,
+    },
+    notes: String,
+    cost: {
+      type: Number,
+      required: true,
+    },
   },
   {
     timestamps: true,
