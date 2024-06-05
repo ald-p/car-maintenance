@@ -7,7 +7,7 @@ const port = process.env.PORT;
 
 /* CORS */
 const corsOptions = {
-  origin: 'http://localhost:5000',
+  origin: 'http://localhost:8080',
   credentials: true,
   methods: ['GET', 'PUT', 'POST', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
