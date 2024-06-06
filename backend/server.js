@@ -45,3 +45,6 @@ app.use((err, req, res, next) => {
 
 /* Listener */
 app.listen(port, () => console.log(`Server running on port ${port}...`));
+// app.listen(port, '192.168.1.74', () =>
+//   console.log(`Server running on port ${port}...`)
+// );

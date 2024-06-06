@@ -3,6 +3,7 @@ import { Route, useNavigate, Routes } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import RecordsPage from './pages/RecordsPage';
 import { NextUIProvider } from '@nextui-org/react';
+import AddRecordPage from './pages/AddRecordPage';
 
 export default function App() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="/records" element={<RecordsPage />} />
+          <Route path="/add-record" element={<AddRecordPage />} />
         </Route>
       </Routes>
     </NextUIProvider>
