@@ -2,23 +2,30 @@ import { Button, input } from '@nextui-org/react';
 import { useState } from 'react';
 import TaskInput from './TaskInput';
 
-const AddServiceTask = () => {
+const AddServiceTask = ({ sendDataToForm }) => {
   const [taskList, setTaskList] = useState([]);
 
   const handleDeleteTask = (num) => {
-    setTaskList(taskList.filter((task) => task.taskNum !== num));
-    console.log(taskList);
+    const newTaskList = taskList.filter((task) => task.taskNum !== num);
+    setTaskList(newTaskList);
+    sendDataToForm(newTaskList);
   };
 
   const handleAddTask = () => {
-    setTaskList(taskList.concat({ taskNum: taskList.length + 1, value: '' }));
+    const newTaskList = taskList.concat({
+      taskNum: taskList.length + 1,
+      value: '',
+    });
+    setTaskList(newTaskList);
+    sendDataToForm(newTaskList);
   };
 
   const handleInputChange = (e, taskNum) => {
-    const updatedTaskList = taskList.map((task) =>
+    const newTaskList = taskList.map((task) =>
       task.taskNum === taskNum ? { ...task, value: e.target.value } : task
     );
-    setTaskList(updatedTaskList);
+    setTaskList(newTaskList);
+    sendDataToForm(newTaskList);
   };
 
   return (
@@ -30,7 +37,7 @@ const AddServiceTask = () => {
         Click "Add Task" to add multiple service tasks.
       </p>
       <Button
-        color="primary"
+        color="secondary"
         variant="bordered"
         size="sm"
         radius="full"

@@ -12,7 +12,7 @@ const Records = () => {
   const [records, setRecords] = useState([]);
 
   const authToken =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY1OWYyY2Q5MmVmYmFjZjI2NzA0MGFjIn0sImlhdCI6MTcxNzcwMzY4MCwiZXhwIjoxNzE3NzA3MjgwfQ.rRuv7189pGkr8kRBRDRwLMix5O7PBEt_DMU6FmWxE3U';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY1OWYyY2Q5MmVmYmFjZjI2NzA0MGFjIn0sImlhdCI6MTcxNzcxNzU3MywiZXhwIjoxNzE3NzIxMTczfQ.BWm3-r1ZumBOfqiSXS5CT3KOtvy_xZCRhO0uQSiSspo';
 
   useEffect(() => {
     const fetchRecords = async () => {
