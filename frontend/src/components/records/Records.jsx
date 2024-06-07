@@ -1,8 +1,10 @@
-import { Accordion, AccordionItem } from '@nextui-org/react';
+import { Accordion, AccordionItem, Button } from '@nextui-org/react';
 import { IoIosSpeedometer } from 'react-icons/io';
 import { FaMoneyBillWave } from 'react-icons/fa';
 import { MdDateRange } from 'react-icons/md';
 import { FaLocationDot } from 'react-icons/fa6';
+import { FaEdit } from 'react-icons/fa';
+import { RiDeleteBin6Line } from 'react-icons/ri';
 import RecordSubtitle from './RecordSubtitle';
 import Tasks from './Tasks';
 import Notes from './Notes';
@@ -74,6 +76,26 @@ const Records = () => {
             <Notes
               notes={record.notes ? record.notes : 'No additional notes.'}
             />
+            <div>
+              <Button
+                isIconOnly
+                color="warning"
+                variant="light"
+                size="sm"
+                radius="lg"
+              >
+                <FaEdit className="text-xl" />
+              </Button>
+              <Button
+                isIconOnly
+                color="danger"
+                variant="light"
+                size="sm"
+                radius="lg"
+              >
+                <RiDeleteBin6Line className="text-xl" />
+              </Button>
+            </div>
           </AccordionItem>
         ))}
       </Accordion>
