@@ -1,6 +1,7 @@
 import { Input, DatePicker, Button } from '@nextui-org/react';
 import AddServiceTask from './AddServiceTask';
 import { useState } from 'react';
+import { Toaster, toast } from 'react-hot-toast';
 
 export const AddRecordForm = () => {
   const [name, setName] = useState('');
@@ -42,9 +43,14 @@ export const AddRecordForm = () => {
         body: JSON.stringify(formObj),
       });
       const data = await res.json();
-      console.log(data);
+
+      if (data.message) {
+        throw new Error();
+      }
+
+      toast.success('Record successfully created!');
     } catch (error) {
-      console.log(error);
+      toast.error('Record could not be created!');
     }
 
     // Reset form
@@ -59,6 +65,10 @@ export const AddRecordForm = () => {
 
   return (
     <section className="container mx-auto max-w-sm my-10 px-4">
+      <Toaster
+        toastOptions={{ className: 'bg-gray-800 text-foreground' }}
+        position="top-right"
+      />
       <form
         className="flex flex-col justify-center items-center gap-4"
         onSubmit={handleFormSubmit}
